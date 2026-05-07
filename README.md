@@ -7,7 +7,6 @@
 - `seo-klyuchnik-rf.md` — SEO для сайта `klyuchnik.rf`.
 - `seo-master-zamkov.md` — SEO для сайта `master-zamkov.ru`.
 - `seo-zamok-pro.md` — SEO для сайта `zamok.pro`.
-- `seo-3-sites.md` — общий сводный SEO-документ по всем трем сайтам.
 
 ## Краткое позиционирование
 
