@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Укажите при необходимости отдельные правила для тестовых поддоменов.
+# Host: zamok.pro
+
+Sitemap: https://zamok.pro/sitemap.xml
