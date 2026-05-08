@@ -1,0 +1,954 @@
+/* ЗАМОК.ПРО — переопределения под бриф + SEO */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap");
+/* Бриф: Playfair Display (заголовки) + Inter (тело), веса 400–800 */
+
+:root {
+  --zamok-navy: #0d2340;
+  --zamok-navy-mid: #1a3a5c;
+  --zamok-accent: #e8510a;
+  --zamok-accent-hover: #ff6b2b;
+  --zamok-cream: #f5f0e6;
+  --zamok-muted: #5a6a7a;
+  --zamok-footer: #0a1929;
+  --zamok-card: #ffffff;
+  --zamok-grad-accent: linear-gradient(270deg, var(--zamok-accent-hover) 0%, var(--zamok-accent) 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.zamok-pro {
+  font-family: Inter, system-ui, sans-serif !important;
+  color: var(--zamok-muted) !important;
+  background-color: var(--zamok-cream) !important;
+  /* Палитра брифа вместо фиолетовых токенов Cloudly (--pp-* в main.css) */
+  --pp-theme: var(--zamok-accent);
+  --pp-header: var(--zamok-navy);
+  --pp-text: var(--zamok-muted);
+  --pp-bg: var(--zamok-cream);
+  --pp-body: var(--zamok-cream);
+  --pp-white: #ffffff;
+  --pp-black: #0d2340;
+  --pp-border: rgba(13, 35, 64, 0.12);
+  --pp-box-shadow: 0px 8px 32px rgba(13, 35, 64, 0.08);
+}
+
+body.zamok-pro h1,
+body.zamok-pro h2,
+body.zamok-pro .pp-section-title h2,
+body.zamok-pro .homemenu-title {
+  font-family: "Playfair Display", Georgia, serif !important;
+}
+
+body.zamok-pro h3,
+body.zamok-pro h4,
+body.zamok-pro h5 {
+  font-family: Inter, sans-serif !important;
+  font-weight: 700;
+  color: var(--zamok-navy);
+}
+
+body.zamok-pro .text-white,
+body.zamok-pro .theme-bg h2,
+body.zamok-pro .theme-bg {
+  color: #fff !important;
+}
+
+.zamok-logo {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  text-decoration: none !important;
+  color: var(--zamok-navy) !important;
+}
+.zamok-logo .dot-pro {
+  color: var(--zamok-accent);
+}
+
+.pp-theme-btn,
+body.zamok-pro .pricing-button .pp-theme-btn {
+  background: var(--zamok-accent) !important;
+  border-radius: 12px !important;
+  font-family: Inter, sans-serif !important;
+  padding: 16px 24px !important;
+}
+.pp-theme-btn::after {
+  background-color: var(--zamok-navy-mid) !important;
+}
+.pp-theme-btn:hover {
+  background: var(--zamok-accent-hover) !important;
+}
+.pp-theme-btn.pp-style-2 {
+  background: transparent !important;
+  border: 2px solid rgba(255, 255, 255, 0.85) !important;
+  color: #fff !important;
+}
+
+.zamok-hero.pp-hero-section {
+  background: linear-gradient(135deg, var(--zamok-navy) 0%, var(--zamok-navy-mid) 100%) !important;
+  padding-bottom: 5rem !important;
+  color: rgba(255, 255, 255, 0.92);
+  position: relative;
+  overflow: hidden;
+}
+.zamok-hero .top-shape img {
+  opacity: 0.12;
+}
+.zamok-hero .pp-hero-content h1 {
+  color: #fff !important;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.18;
+}
+.zamok-hero .pp-hero-content > p.pp-text-muted {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 1.05rem;
+  max-width: 38rem;
+}
+
+.zamok-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 1.25rem;
+  font-family: Inter, sans-serif !important;
+  color: #fff !important;
+}
+.zamok-badge-live .pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  animation: zamok-pulse 1.8s ease-out infinite;
+}
+@keyframes zamok-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+.zamok-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.zamok-kpi-row .kpi {
+  text-align: center;
+}
+.zamok-kpi-row .val {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.zamok-kpi-row .lab {
+  font-size: 0.78rem;
+  opacity: 0.82;
+}
+
+.zamok-hero-phone-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 1.75rem;
+  backdrop-filter: blur(8px);
+}
+.zamok-hero-phone-card .tel-big {
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 800;
+}
+.zamok-hero-phone-card a {
+  color: #fff !important;
+}
+
+.zamok-hero .pp-hero-image img,
+.zamok-no-photo-about .about-image img,
+.zamok-no-photo .pp-key-feature-image img,
+.zamok-no-photo-cta .pp-cta-image img {
+  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.zamok-hero .pp-hero-image {
+  min-height: 0;
+}
+.zamok-hero-visual-spacer {
+  min-height: 2rem;
+}
+
+.zamok-marquee {
+  background: var(--zamok-accent);
+  color: #fff;
+  padding: 0.65rem 0;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: Inter, sans-serif !important;
+}
+.zamok-marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: zamok-marquee 25s linear infinite;
+}
+.zamok-marquee-inner span {
+  padding: 0 2.5rem;
+  white-space: nowrap;
+}
+@keyframes zamok-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.zamok-services .pp-offer-box-item,
+.zamok-guarantee .pp-offer-box-item {
+  background: var(--zamok-card);
+  border-radius: 16px;
+  border: 1px solid rgba(13, 35, 64, 0.08);
+  height: 100%;
+}
+.zamok-services .pp-offer-icon svg,
+.zamok-guarantee .pp-offer-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--zamok-navy);
+}
+.zamok-price-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--zamok-accent);
+  margin-bottom: 0.5rem;
+}
+
+.zamok-steps ol.steps-list {
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.zamok-steps ol.steps-list li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.zamok-steps ol.steps-list li::before {
+  counter-increment: step;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--zamok-accent);
+  font-weight: 800;
+  color: #fff;
+  font-size: 1.1rem;
+}
+.zamok-steps ol.steps-list h3 {
+  color: #fff !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.35rem;
+}
+.zamok-steps ol.steps-list p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.section-zamok-cream {
+  background: var(--zamok-cream) !important;
+}
+
+.zamok-about {
+  background: var(--zamok-navy) !important;
+}
+.zamok-pills-scroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  scroll-snap-type: x proximity;
+}
+.zamok-pills-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.zamok-pills-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+}
+.zamok-pill {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.zamok-facts-grid .fact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.88);
+  height: 100%;
+}
+
+.zamok-zones-accordion button.zone-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 1rem 0;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  cursor: pointer;
+  font-family: Inter, sans-serif !important;
+}
+.zamok-zones-accordion .zone-panel {
+  display: none;
+  padding-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.zamok-zones-accordion .zone-panel.active {
+  display: block;
+}
+.zamok-zones-accordion button.zone-toggle svg {
+  transition: transform 0.25s ease;
+}
+.zamok-zones-accordion button.zone-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.zamok-review-bar {
+  background: var(--zamok-accent);
+  padding: 1.75rem 0;
+}
+.zamok-review-bar h2,
+.zamok-review-bar p {
+  color: #fff !important;
+}
+
+.zamok-reviews-strip {
+  background: var(--zamok-navy);
+  padding: 2rem 0 2rem;
+}
+
+.zamok-reviews-strip .reviews-scroller {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+.zamok-reviews-strip article.card-review {
+  flex: 0 0 min(340px, 85vw);
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.35rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+.zamok-reviews-strip article.card-review .stars {
+  color: #fcd34d;
+  margin-bottom: 0.5rem;
+}
+
+.zamok-quote-wall {
+  padding: 3rem 0;
+}
+.zamok-quote-wall .quote-cell {
+  border-left: 4px solid var(--zamok-accent);
+  padding: 1rem 1rem 1rem 1.25rem;
+  background: #fff;
+  border-radius: 0 14px 14px 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 30px rgba(13, 35, 64, 0.06);
+  font-style: italic;
+  color: var(--zamok-muted);
+}
+
+.zamok-review-summary {
+  background: var(--zamok-navy);
+  padding: 1.5rem 0;
+}
+.zamok-review-summary .summ {
+  text-align: center;
+  color: #fff !important;
+  font-family: Inter, sans-serif !important;
+}
+.zamok-review-summary .summ strong {
+  display: block;
+  font-size: 1.85rem;
+  font-family: "Playfair Display", serif;
+}
+
+.zamok-faq {
+  padding-bottom: 3rem;
+}
+.zamok-faq-grid {
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .zamok-faq-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+}
+.zamok-faq button.faq-q {
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1rem 0;
+  border: none;
+  border-top: 1px solid rgba(13, 35, 64, 0.12);
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--zamok-navy);
+  font-family: Inter, sans-serif !important;
+}
+.zamok-faq .faq-icon-plus {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--zamok-accent);
+  transition: transform 0.28s ease;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 400;
+}
+.zamok-faq button.faq-q[aria-expanded="true"] .faq-icon-plus {
+  transform: rotate(45deg);
+}
+.zamok-faq .faq-a {
+  display: none;
+  padding: 0 0 1.2rem;
+  max-width: 52rem;
+  color: var(--zamok-muted);
+}
+.zamok-faq .faq-item.open .faq-a {
+  display: block;
+}
+
+.zamok-form-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 24px 60px rgba(13, 35, 64, 0.08);
+  border: 1px solid rgba(13, 35, 64, 0.06);
+}
+.zamok-form-card label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.82rem;
+  margin-bottom: 0.35rem;
+  color: var(--zamok-navy);
+}
+.zamok-form-card input,
+.zamok-form-card select,
+.zamok-form-card textarea {
+  width: 100%;
+  border: 1px solid rgba(13, 35, 64, 0.15);
+  border-radius: 12px;
+  padding: 0.75rem 1rem !important;
+  margin-bottom: 1rem;
+  font-family: Inter, sans-serif !important;
+  color: var(--zamok-navy) !important;
+  background: #fff !important;
+}
+.zamok-form-card input:focus,
+.zamok-form-card select:focus,
+.zamok-form-card textarea:focus {
+  outline: 2px solid var(--zamok-accent);
+  outline-offset: 0;
+}
+.zamok-form-success {
+  display: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: var(--zamok-navy);
+  font-weight: 600;
+}
+/* Плавающие FAB: звонок справа, «наверх» слева — не наслаиваются */
+body.zamok-pro #pp-back-top.pp-back-to-top {
+  left: calc(22px + env(safe-area-inset-left, 0)) !important;
+  right: auto !important;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0)) !important;
+  width: 50px !important;
+  height: 50px !important;
+  z-index: 998 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--zamok-navy) !important;
+}
+body.zamok-pro #pp-back-top.pp-back-to-top:hover {
+  background-color: var(--zamok-navy-mid) !important;
+  color: #fff !important;
+}
+
+/* Посадочные: успех формы с атрибутом hidden */
+.zamok-form-success[hidden] {
+  display: none !important;
+}
+.zamok-form-success.show {
+  display: block !important;
+}
+
+body.zamok-pro .zamok-float-call {
+  position: fixed;
+  left: auto !important;
+  right: calc(22px + env(safe-area-inset-right, 0)) !important;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0)) !important;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--zamok-accent);
+  box-shadow: 0 12px 40px rgba(232, 81, 10, 0.45);
+  display: grid;
+  place-items: center;
+  color: #fff !important;
+  z-index: 999 !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.zamok-float-call.visible {
+  opacity: 1;
+  visibility: visible;
+  animation: zamok-bob 3s ease-in-out infinite;
+}
+.zamok-float-call.hidden-near-form {
+  opacity: 0;
+  visibility: hidden;
+  animation: none;
+}
+@keyframes zamok-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.pp-footer-section.zamok-footer {
+  background: var(--zamok-footer) !important;
+}
+
+/* main.css: ::before (--pp-header) + .footer-bottom3 дают второй оттенок; в брифе один фон футера */
+body.zamok-pro .pp-footer-section.zamok-footer::before {
+  display: none !important;
+}
+
+body.zamok-pro .zamok-footer .footer-bottom3 {
+  background-color: var(--zamok-footer) !important;
+}
+
+.zamok-footer .pp-footer-widget-items h3,
+.zamok-footer .pp-widget-head h3 {
+  color: rgba(255, 255, 255, 0.95);
+}
+.zamok-footer a {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.zamok-footer-centertel {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+.zamok-footer-centertel a {
+  font-weight: 800;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  color: #fff !important;
+}
+.zamok-address-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.zamok-address-pills address {
+  font-style: normal;
+}
+.zamok-address-pills span {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body.zamok-pro .mean-container a.meanmenu-reveal span {
+  background: var(--zamok-navy);
+}
+
+body.zamok-pro .sticky {
+  box-shadow: 0 10px 40px rgba(13, 35, 64, 0.08);
+}
+
+.zamok-link-arrow {
+  color: var(--zamok-accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.zamok-link-arrow:hover {
+  color: var(--zamok-accent-hover);
+}
+
+.zamok-header-phone {
+  font-weight: 800;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.zamok-header-phone a {
+  color: var(--zamok-navy) !important;
+}
+
+.zamok-subtitle-brief {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-top: 0.75rem;
+  font-family: Inter, sans-serif !important;
+}
+
+/* Хаб посадочных на главной */
+.zamok-seo-hub .zamok-hub-card {
+  background: var(--zamok-card);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid rgba(13, 35, 64, 0.08);
+  box-shadow: 0 12px 40px rgba(13, 35, 64, 0.05);
+}
+
+.zamok-hub-list li + li {
+  margin-top: 0.5rem;
+}
+
+.zamok-hub-list a {
+  color: var(--zamok-navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232, 81, 10, 0.35);
+}
+.zamok-hub-list a:hover {
+  color: var(--zamok-accent);
+  border-bottom-color: var(--zamok-accent);
+}
+
+.zamok-hub-pill {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(13, 35, 64, 0.06);
+  color: var(--zamok-navy) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: 1px solid rgba(13, 35, 64, 0.1);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.zamok-hub-pill:hover {
+  background: rgba(232, 81, 10, 0.12);
+  border-color: rgba(232, 81, 10, 0.35);
+  color: var(--zamok-navy) !important;
+}
+
+.pp-theme-btn.zamok-hub-btn-muted {
+  background: transparent !important;
+  border: 2px solid var(--zamok-navy) !important;
+  color: var(--zamok-navy) !important;
+}
+.pp-theme-btn.zamok-hub-btn-muted:hover {
+  background: rgba(13, 35, 64, 0.06) !important;
+}
+
+.zamok-hub-sublink {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--zamok-muted) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+.zamok-hub-sublink:hover {
+  color: var(--zamok-accent) !important;
+}
+
+/* ——— Типографика брифа поверх темы (DM Sans / Open Sans) ——— */
+body.zamok-pro .pp-sub-title,
+body.zamok-pro .pp-text,
+body.zamok-pro p,
+body.zamok-pro li,
+body.zamok-pro label,
+body.zamok-pro input,
+body.zamok-pro select,
+body.zamok-pro textarea,
+body.zamok-pro button,
+body.zamok-pro .offcanvas__content,
+body.zamok-pro .mean-container .mean-nav ul li a {
+  font-family: Inter, system-ui, sans-serif !important;
+}
+
+body.zamok-pro .header-main .main-menu ul li a:not(.pp-theme-btn) {
+  font-family: Inter, system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+body.zamok-pro .pp-link-btn {
+  font-family: Inter, system-ui, sans-serif !important;
+}
+
+/* Один текстовый логотип: sticky больше не переключает на «вторую» версию */
+.sticky.header-1 .header-logo {
+  display: inline-flex !important;
+}
+.header-1 .header-logo {
+  align-items: center;
+  line-height: 1.15 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.zamok-pro .header-main .logo.zamok-header-logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0;
+}
+
+/* Nice Select: иначе float ломает высоту формы — футер (z-index:9) наезжает на поля */
+.zamok-form-card .nice-select,
+.zamok-hero-phone-card .nice-select {
+  float: none !important;
+  clear: both !important;
+  display: block !important;
+  width: 100% !important;
+}
+.zamok-form-card .nice-select.wide {
+  width: 100% !important;
+}
+.zamok-form-card .nice-select .list,
+.zamok-hero-phone-card .nice-select .list {
+  z-index: 100 !important;
+}
+.zamok-form-card form > .mb-3::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.zamok-form-card form {
+  position: relative;
+  z-index: 1;
+}
+
+.zamok-contact-zone {
+  position: relative;
+  z-index: 20 !important;
+  padding-bottom: 5.5rem !important;
+}
+
+body.zamok-pro .pp-footer-section.zamok-footer {
+  z-index: 8 !important;
+}
+
+/* --------- Устранение остатков фиолетового Cloudly (#7B1FE4 / градиенты) --------- */
+
+body.zamok-pro .theme-bg {
+  background: linear-gradient(135deg, var(--zamok-navy) 0%, var(--zamok-navy-mid) 100%) !important;
+}
+
+body.zamok-pro .pp-section-title span:not(.text-white),
+body.zamok-pro .pp-section-title span.pp-sub-title {
+  color: var(--zamok-accent) !important;
+}
+
+body.zamok-pro .pp-section-title span::before,
+body.zamok-pro .pp-section-title span::after {
+  background: linear-gradient(270deg, var(--zamok-accent-hover) 0%, var(--zamok-accent) 100%) !important;
+}
+
+body.zamok-pro .pp-section-title span.pp-style-2::before,
+body.zamok-pro .pp-section-title span.pp-style-2::after {
+  background: linear-gradient(270deg, var(--zamok-accent-hover) 0%, var(--zamok-accent) 100%) !important;
+}
+
+body.zamok-pro .pp-section-title h2:not(.text-white) {
+  color: var(--zamok-navy) !important;
+}
+
+body.zamok-pro .section-zamok-cream .pp-section-title h2:not(.text-white) {
+  color: var(--zamok-navy) !important;
+}
+
+/* Икон-бокс услуг: убрать фиолетовый градиент под SVG */
+body.zamok-pro .zamok-services .pp-offer-icon,
+body.zamok-pro .zamok-guarantee .pp-offer-icon {
+  background: rgba(13, 35, 64, 0.07) !important;
+  border: 1px solid rgba(13, 35, 64, 0.1);
+  display: grid;
+  place-items: center;
+}
+
+body.zamok-pro .zamok-services .pp-offer-box-item:hover,
+body.zamok-pro .zamok-guarantee .pp-offer-box-item:hover {
+  border-color: rgba(232, 81, 10, 0.45) !important;
+}
+
+/* Курсор и прочие элементы с var(--pp-theme) уже получают акцент из подмены --pp-theme */
+
+body.zamok-pro .mouseCursor.cursor-outer {
+  border-color: rgba(232, 81, 10, 0.45);
+  background-color: rgba(232, 81, 10, 0.35);
+}
+
+body.zamok-pro .nice-select:hover,
+body.zamok-pro .nice-select:active,
+body.zamok-pro .nice-select.open,
+body.zamok-pro .nice-select:focus {
+  border-color: rgba(13, 35, 64, 0.28) !important;
+}
+
+body.zamok-pro .nice-select.open .list {
+  border: 1px solid rgba(13, 35, 64, 0.1);
+}
+
+/* Остатки жёстких градиентов / rgba Cloudly в main.css */
+body.zamok-pro .zamok-hero.pp-hero-1::before {
+  display: none !important;
+}
+
+body.zamok-pro .pp-offer-box-item .pp-offer-icon {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-how-work-items h6 {
+  background: linear-gradient(
+    270deg,
+    rgba(232, 81, 10, 0.22) 0%,
+    rgba(255, 107, 43, 0.22) 100%
+  ) !important;
+}
+
+body.zamok-pro .pp-instagram-wrapper .pp-instagram-banner-items .pp-banner-image::before {
+  background: rgba(232, 81, 10, 0.55) !important;
+}
+
+body.zamok-pro .pp-instagram-wrapper .pp-instagram-banner-items .pp-banner-image .icon {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-why-benefit-item .pp-icon::before {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-key-feature-wrapper .pp-key-feature-content .pp-feature-list li::before {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-feature-privacy-wrapper .pp-feature-privacy-content .pp-theme-btn::after {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-contact-wrapper .pp-contact-box-item .pp-contact-item .pp-icon {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-array-buttons .array-prev:hover,
+body.zamok-pro .pp-array-buttons .array-next {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-array-buttons .array-next:hover {
+  background: var(--zamok-navy) !important;
+}
+
+body.zamok-pro .pp-hero-2 .pp-hero-content .pp-hero-button .pp-theme-btn.pp-style-2::after,
+body.zamok-pro .hero-3 .hero-content .hero-author .pp-theme-btn.pp-style-2::after {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-pricing-section .nav .nav-link::after {
+  background: var(--zamok-grad-accent) !important;
+}
+
+body.zamok-pro .pp-news-details-wrapper .pp-news-details-content .pp-sideber {
+  border-left-color: var(--zamok-accent) !important;
+}
+
+body.zamok-pro .pp-team-information-item .pp-team-skill-box .progress-wrap .pro-items .progress {
+  background: rgba(232, 81, 10, 0.25) !important;
+}
+
+body.zamok-pro .mean-container .mean-bar,
+body.zamok-pro .mean-container .mean-nav {
+  background: var(--zamok-navy) !important;
+}
+
+body.zamok-pro .zamok-services .pp-offer-box-item .pp-offer-icon,
+body.zamok-pro .zamok-guarantee .pp-offer-box-item .pp-offer-icon {
+  background: rgba(13, 35, 64, 0.07) !important;
+}
