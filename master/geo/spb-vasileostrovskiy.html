@@ -13,7 +13,7 @@
   <meta property="og:locale" content="ru_RU">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kanit:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231b2535' width='32' height='32' rx='6'/%3E%3Cpath fill='none' stroke='%23f59e0b' stroke-width='2' d='M10 14h12v10H10z M16 14v-4a4 4 0 118 0v4'/%3E%3C/svg%3E" type="image/svg+xml">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Мастер по замкам Василеостровский район","description":"Аварийное вскрытие замков в Василеостровский районе Санкт-Петербурга.","url":"{SITE_URL}/geo/spb-vasileostrovskiy.html","isPartOf":{"@type":"WebSite","url":"{SITE_URL}/","name":"{BRAND_SHORT}"},"about":{"@id":"{SCHEMA_ORG_ID}"}}
@@ -22,15 +22,23 @@
 </head>
 <body>
   <a class="fab-call" id="fabCall" href="tel:{PHONE_E164}" aria-label="{PHONE_FAB_ARIA}"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006 6l1.5-2 4 1.5v3a2 2 0 01-2 2A17 17 0 013 8.5a2 2 0 012-2z"/></svg></a>
-  <header class="header-section"><div class="container header-wrapper">
-    <a class="logo" href="../index.html#top"><span data-site="BRAND_LOGO_MAIN"></span><span data-site="BRAND_LOGO_TLD"></span></a>
-    <nav class="main-nav" aria-label="Основное меню">
-      <a href="../index.html#contact">Вызвать мастера</a>
-      <a href="sankt-peterburg.html">СПб</a>
-      <a href="../index.html#services">Услуги</a>
-    </nav>
-    <a class="cmn--btn header-cta" href="tel:{PHONE_E164}"><span data-site="PHONE_DISPLAY"></span></a>
-  </div></header>
+  <header class="header-section" id="header">
+    <div class="container header-wrapper">
+      <a class="logo" href="../index.html#top"><span data-site="BRAND_LOGO_MAIN"></span><span data-site="BRAND_LOGO_TLD"></span></a>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mainNav">
+        <span class="menu-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Основное меню">
+        <a href="../index.html#contact">Вызвать мастера</a>
+        <a href="../index.html#services">Услуги</a>
+        <a href="../index.html#process">Как работаем</a>
+        <a href="../index.html#guarantees">Гарантии</a>
+        <a href="../index.html#reviews">Отзывы</a>
+        <a href="../index.html#faq">Вопросы</a>
+      </nav>
+      <a class="cmn--btn header-cta" href="tel:{PHONE_E164}"><span data-site="PHONE_DISPLAY"></span></a>
+    </div>
+  </header>
   <main class="inner-main"><div class="container">
   <article class="inner-article inner-article--wide geo-page">
     <nav class="inner-breadcrumb" aria-label="Навигация">
@@ -64,13 +72,54 @@
       </ul></nav>
     <p style="margin-top:1.25rem;font-size:0.92rem;">Услуги: <a href="../uslugi/vskrytie-kvartir.html">квартиры</a>, <a href="../uslugi/vskrytie-avto.html">авто</a>, <a href="../uslugi/vskrytie-seifov.html">сейфы</a>, <a href="../uslugi/vskrytie-ofisov.html">офисы</a>.</p>
   </article></div></main>
-  <footer class="site-footer"><div class="container">
-    <p class="footer-tel"><a href="tel:{PHONE_E164}"><span data-site="PHONE_DISPLAY"></span></a></p>
-    <p style="text-align:center;"><a href="sankt-peterburg.html" class="u-muted">Все районы СПб</a> · <a href="../index.html" class="u-muted">Главная</a></p>
-    <p class="copyright">© МАСТЕР.РФ</p>
-  </div></footer>
-    <script src="../js/site-config.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-tel"><a href="tel:{PHONE_E164}"><span data-site="PHONE_DISPLAY"></span></a></p>
+      <div class="footer-cta"><a class="cmn--btn" href="../index.html#contact"><span>Оставить заявку</span></a></div>
+      <div class="footer-cols">
+        <div>
+          <strong>Услуги</strong>
+          <ul>
+            <li><a href="../uslugi/vskrytie-kvartir.html">Вскрытие квартир</a></li>
+            <li><a href="../uslugi/vskrytie-avto.html">Автомобили</a></li>
+            <li><a href="../uslugi/vskrytie-seifov.html">Сейфы</a></li>
+            <li><a href="../uslugi/vskrytie-ofisov.html">Офисы</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>География</strong>
+          <ul>
+            <li><a href="../geo/moskva.html">Москва</a></li>
+            <li><a href="../geo/moskovskaya-oblast.html">Московская обл.</a></li>
+            <li><a href="../geo/sankt-peterburg.html">Санкт-Петербург</a></li>
+            <li><a href="../geo/leningradskaya-oblast.html">Ленинградская обл.</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Компания</strong>
+          <ul>
+            <li><a href="../index.html#about">О службе</a></li>
+            <li><a href="../index.html#reviews">Отзывы</a></li>
+            <li><a href="../index.html#faq">Вопросы</a></li>
+            <li><a href="../index.html#contact">Контакты</a></li>
+            <li><a href="../politika-konfidencialnosti.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+      </div>
+      <address>
+        <a href="tel:{PHONE_E164}"><span data-site="PHONE_DISPLAY"></span></a>
+        <a href="mailto:{EMAIL}"><span data-site="EMAIL"></span></a>
+        <span>Москва, Санкт-Петербург · круглосуточно</span>
+      </address>
+      <p class="footer-legal"><a href="../politika-konfidencialnosti.html">Политика конфиденциальности</a> · <a href="../politika-konfidencialnosti.html#cookie">Файлы cookie</a></p>
+      <p class="copyright">© <span id="y"></span> <span data-site="BRAND_SHORT"></span> · <span data-site="COPYRIGHT_NOTE"></span></p>
+    </div>
+  </footer>
+  <script src="../js/site-config.js"></script>
   <script defer src="../js/site-bind.js"></script>
   <script defer src="../js/main.js"></script>
+  <script defer src="../js/cookie-consent.js"></script>
+  <script defer src="../js/metrika.js"></script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109151024" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>

@@ -7,6 +7,42 @@
       yearEl.textContent = String(new Date().getFullYear());
     }
 
+    var headerEl = document.getElementById('header');
+    var menuToggle = document.getElementById('menuToggle');
+
+    function closeMobileNav() {
+      if (headerEl) headerEl.classList.remove('nav-open');
+      if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+      document.body.style.overflow = '';
+    }
+
+    function openMobileNav() {
+      if (!headerEl || !menuToggle) return;
+      headerEl.classList.add('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Закрыть меню');
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (menuToggle && headerEl) {
+      menuToggle.addEventListener('click', function () {
+        if (headerEl.classList.contains('nav-open')) {
+          closeMobileNav();
+        } else {
+          openMobileNav();
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMobileNav();
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 992) closeMobileNav();
+      });
+    }
+
     /* Плавный скролл для якорей */
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
@@ -15,6 +51,7 @@
           var el = document.querySelector(id);
           if (el) {
             e.preventDefault();
+            closeMobileNav();
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
@@ -97,6 +134,8 @@
     var formEmail = C.EMAIL || 'info@master-zamkov.ru';
     var formSubject = C.FORM_SUBJECT || 'Заявка master-zamkov.ru';
 
+    var consentPd = document.getElementById('consentPd');
+
     if (leadForm && formBtn && formSuccess && phoneInput) {
       leadForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -105,6 +144,14 @@
         var service = document.getElementById('service').value;
         var address = document.getElementById('address').value.trim();
         var comment = document.getElementById('comment').value.trim();
+        if (consentPd) {
+          if (!consentPd.checked) {
+            consentPd.setCustomValidity('Необходимо согласие на обработку персональных данных');
+            consentPd.reportValidity();
+            return;
+          }
+          consentPd.setCustomValidity('');
+        }
         if (!name || phoneDigits.length < 11 || !service || !address) {
           leadForm.reportValidity();
           return;
@@ -119,6 +166,7 @@
             service: service,
             address: address,
             comment: comment || '—',
+            consent_personal_data: consentPd && consentPd.checked ? 'да' : '—',
             _subject: formSubject
           })
         })

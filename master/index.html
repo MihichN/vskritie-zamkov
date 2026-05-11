@@ -17,9 +17,9 @@
   <meta name="twitter:description" content="Вскрытие и замена замков без повреждений. Выезд 24/7.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kanit:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231b2535' width='32' height='32' rx='6'/%3E%3Cpath fill='none' stroke='%23f59e0b' stroke-width='2' d='M10 14h12v10H10z M16 14v-4a4 4 0 118 0v4'/%3E%3C/svg%3E" type="image/svg+xml">
-  <!-- Яндекс.Метрика: вставьте код счётчика с metrika.yandex.ru (номер вместо NNNNNNNN) -->
+  <!-- Метрика: js/metrika.js (после согласия «Принять все» в баннере cookie), ID в site-config.js → YANDEX_METRIKA_ID -->
 
   <script type="application/ld+json">
   {
@@ -150,7 +150,10 @@
   <header class="header-section" id="header">
     <div class="container header-wrapper">
       <a class="logo" href="#top"><span data-site="BRAND_LOGO_MAIN"></span><span data-site="BRAND_LOGO_TLD"></span></a>
-      <nav class="main-nav" aria-label="Основное меню">
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mainNav">
+        <span class="menu-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Основное меню">
         <a href="#contact">Вызвать мастера</a>
         <a href="#services">Услуги</a>
         <a href="#process">Как работаем</a>
@@ -182,7 +185,7 @@
           <div class="video-pulse" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
           </div>
-          <span class="proces-text">Средний выезд ~20 мин по городу</span>
+          <span class="proces-text"><span class="proces-text-inner">Средний выезд ~20 мин по городу</span></span>
         </div>
         <div class="kpi-bar">
           <div class="kpi-item"><strong>~20 мин</strong><span>Средний выезд</span></div>
@@ -204,10 +207,11 @@
             </defs>
             <rect x="10" y="10" width="180" height="140" rx="16" fill="url(#g1)" stroke="rgba(255,255,255,0.15)" stroke-width="1.6"/>
             <g fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M72 88V64a28 28 0 0156 0v24"/>
+              <path d="M58 88V62Q100 20 142 62"/>
+              <path d="M142 62l12-12"/>
               <rect x="58" y="88" width="84" height="56" rx="8"/>
-              <circle cx="100" cy="116" r="10"/>
-              <path d="M100 116v8M130 48l12-12M70 48L58 36"/>
+              <path d="M100 104v22M92 116h16"/>
+              <circle cx="100" cy="116" r="5" fill="rgba(245,158,11,0.35)" stroke="rgba(255,255,255,0.85)"/>
             </g>
           </svg>
         </div>
@@ -239,7 +243,7 @@
         <article class="service__unique__item">
           <div class="left__service">
             <div class="serial__adjust">
-              <span>01</span>
+              <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="40" height="40"><path d="M8 40V14l16-8 16 8v26H8z"/><path d="M19 40V22h10v18H19z"/><path d="M24 30v5"/><circle cx="24" cy="32" r="1.8" fill="currentColor" stroke="none"/></svg></span>
               <div class="cont">
                 <p class="service-cat">Квартира и дом</p>
                 <h3><a href="uslugi/vskrytie-kvartir.html">Вскрытие квартир и домов</a></h3>
@@ -253,7 +257,7 @@
         <article class="service__unique__item">
           <div class="left__service">
             <div class="serial__adjust">
-              <span>02</span>
+              <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="40" height="40"><path d="M8 32h4l2-7h20l2 7h4v8H8v-8z"/><path d="M12 32v-5h24v5"/><circle cx="14" cy="36" r="3"/><circle cx="34" cy="36" r="3"/><path d="M16 22h16"/></svg></span>
               <div class="cont">
                 <p class="service-cat">Автомобиль</p>
                 <h3><a href="uslugi/vskrytie-avto.html">Вскрытие автомобилей</a></h3>
@@ -267,7 +271,7 @@
         <article class="service__unique__item">
           <div class="left__service">
             <div class="serial__adjust">
-              <span>03</span>
+              <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="40" height="40"><rect x="10" y="14" width="28" height="30" rx="3"/><path d="M14 14V12a10 10 0 0 1 20 0v2"/><circle cx="24" cy="26" r="6"/><path d="M24 26v4"/><path d="M18 34h12"/></svg></span>
               <div class="cont">
                 <p class="service-cat">Сейф</p>
                 <h3><a href="uslugi/vskrytie-seifov.html">Вскрытие сейфов</a></h3>
@@ -281,7 +285,7 @@
         <article class="service__unique__item">
           <div class="left__service">
             <div class="serial__adjust">
-              <span>04</span>
+              <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="40" height="40"><path d="M10 40V20l14-8 14 8v20H10z"/><path d="M18 26h5v12h-5z"/><path d="M26 24h5v14h-5z"/><path d="M34 22h5v16h-5z"/></svg></span>
               <div class="cont">
                 <p class="service-cat">Офис и склад</p>
                 <h3><a href="uslugi/vskrytie-ofisov.html">Вскрытие офисов и складов</a></h3>
@@ -392,11 +396,12 @@
                 </linearGradient>
               </defs>
               <rect x="8" y="8" width="224" height="184" rx="20" fill="url(#ag)" stroke="rgba(245,158,11,0.25)" stroke-width="1.5"/>
-              <g fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round">
-                <path d="M88 112V76a32 32 0 0164 0v36"/>
+              <g fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M72 112V78Q120 24 168 78"/>
+                <path d="M168 78l12-12"/>
                 <rect x="72" y="112" width="96" height="64" rx="10"/>
-                <circle cx="120" cy="144" r="12"/>
-                <path d="M120 72l28-24M152 40l8-8"/>
+                <path d="M120 130v22M108 142h24"/>
+                <circle cx="120" cy="144" r="6" fill="rgba(245,158,11,0.35)" stroke="rgba(255,255,255,0.9)"/>
               </g>
             </svg>
           </div>
@@ -426,9 +431,10 @@
   </section>
 
   <div class="reviews-strip">
-    <div class="container project__head">
-      <span class="common__sub">Отзывы</span>
-      <h2 class="section-h2" id="reviews">Что говорят клиенты</h2>
+    <div class="container reviews-strip-inner">
+      <p class="reviews-strip-kicker">Что говорят клиенты</p>
+      <h2 class="reviews-strip-title" id="reviews">Отзывы</h2>
+      <p class="reviews-strip-sub">Реальные истории выездов в Москве и Санкт-Петербурге</p>
     </div>
   </div>
   <div class="reviews-scroll-wrap">
@@ -513,20 +519,20 @@
 
   <section class="contact-section" id="contact">
     <div class="container">
-      <div class="project__head">
+      <div class="project__head contact-section-head">
         <span class="common__sub">Связаться</span>
         <h2 class="section-h2">Оставить заявку</h2>
       </div>
-      <div class="form-grid">
+      <div class="form-grid form-grid--light">
         <div class="form-side">
-          <p class="section-lead" style="text-align:left;margin-bottom:1rem;">Оставьте номер — перезвоним и уточним задачу. Обязательные поля отмечены.</p>
+          <p class="section-lead form-side-lead">Оставьте номер — перезвоним и уточним задачу. Обязательные поля отмечены.</p>
           <ul class="form-bullets">
             <li><svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Перезвон за пару минут в дневное время</li>
             <li><svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Можно указать удобный адрес и тип замка</li>
             <li><svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Без спама — один контактный звонок по делу</li>
           </ul>
         </div>
-        <div>
+        <div class="form-panel">
           <!-- FormSubmit: замените email после подтверждения ящика -->
           <form id="leadForm" novalidate>
             <input type="hidden" name="_subject" value="{FORM_SUBJECT}">
@@ -558,6 +564,12 @@
             <div class="field">
               <label for="comment">Комментарий <span class="u-muted">(необязательно)</span></label>
               <textarea id="comment" name="comment" placeholder="Например: замок ABUS, ключ обломился в личинке"></textarea>
+            </div>
+            <div class="field field--consent">
+              <label class="checkbox-label" for="consentPd">
+                <input type="checkbox" id="consentPd" name="consent_personal_data" value="1" required>
+                <span>Я согласен(на) на <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener noreferrer">обработку персональных данных</a> в целях обработки заявки и обратной связи. С <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener noreferrer">Политикой конфиденциальности</a> ознакомлен(а).</span>
+              </label>
             </div>
             <button type="submit" class="cmn--btn w-full" id="formSubmitBtn"><span>Вызвать мастера сейчас</span></button>
             <p class="form-success" id="formSuccess" role="status">Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>
@@ -597,6 +609,7 @@
             <li><a href="#reviews">Отзывы</a></li>
             <li><a href="#faq">Вопросы</a></li>
             <li><a href="#contact">Контакты</a></li>
+            <li><a href="politika-konfidencialnosti.html">Политика конфиденциальности</a></li>
           </ul>
         </div>
       </div>
@@ -605,6 +618,7 @@
         <a href="mailto:{EMAIL}"><span data-site="EMAIL"></span></a>
         <span>Москва, Санкт-Петербург · круглосуточно</span>
       </address>
+      <p class="footer-legal"><a href="politika-konfidencialnosti.html">Политика конфиденциальности</a> · <a href="politika-konfidencialnosti.html#cookie">Файлы cookie</a></p>
       <p class="copyright">© <span id="y"></span> <span data-site="BRAND_SHORT"></span> · <span data-site="COPYRIGHT_NOTE"></span></p>
     </div>
   </footer>
@@ -612,5 +626,8 @@
   <script src="js/site-config.js"></script>
   <script defer src="js/site-bind.js"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="js/cookie-consent.js"></script>
+  <script defer src="js/metrika.js"></script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109151024" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
