@@ -1,6 +1,5 @@
-/* ЗАМОК.ПРО — переопределения под бриф + SEO */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap");
-/* Бриф: Playfair Display (заголовки) + Inter (тело), веса 400–800 */
+/* ЗАМОК.ПРО — гротеск (без засечек): Manrope + Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
   --zamok-navy: #0d2340;
@@ -38,7 +37,7 @@ body.zamok-pro h1,
 body.zamok-pro h2,
 body.zamok-pro .pp-section-title h2,
 body.zamok-pro .homemenu-title {
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: Manrope, Inter, system-ui, sans-serif !important;
 }
 
 body.zamok-pro h3,
@@ -56,7 +55,7 @@ body.zamok-pro .theme-bg {
 }
 
 .zamok-logo {
-  font-family: "Playfair Display", serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   font-weight: 800;
   font-size: 1.35rem;
   line-height: 1.1;
@@ -91,7 +90,14 @@ body.zamok-pro .pricing-button .pp-theme-btn {
   padding-bottom: 5rem !important;
   color: rgba(255, 255, 255, 0.92);
   position: relative;
-  overflow: hidden;
+  /* не hidden: иначе nice-select обрезается и уходит «под» следующий блок */
+  overflow: visible;
+  z-index: 3;
+}
+/* перебить .fix { overflow: hidden } на той же секции */
+.zamok-hero.pp-hero-section.fix,
+.zamok-hero.fix {
+  overflow: visible !important;
 }
 .zamok-hero .top-shape img {
   opacity: 0.12;
@@ -155,7 +161,7 @@ body.zamok-pro .pricing-button .pp-theme-btn {
 }
 .zamok-kpi-row .val {
   display: block;
-  font-family: "Playfair Display", serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   font-size: 1.85rem;
   font-weight: 700;
   color: #fff;
@@ -201,6 +207,8 @@ body.zamok-pro .pricing-button .pp-theme-btn {
 }
 
 .zamok-marquee {
+  position: relative;
+  z-index: 1;
   background: var(--zamok-accent);
   color: #fff;
   padding: 0.65rem 0;
@@ -298,6 +306,10 @@ body.zamok-pro .pricing-button .pp-theme-btn {
 
 .zamok-about {
   background: var(--zamok-navy) !important;
+  overflow: visible !important;
+}
+.zamok-about.zamok-about--layout-full .zamok-zones-accordion {
+  max-width: 100%;
 }
 .zamok-pills-scroll {
   display: flex;
@@ -429,7 +441,7 @@ body.zamok-pro .pricing-button .pp-theme-btn {
 .zamok-review-summary .summ strong {
   display: block;
   font-size: 1.85rem;
-  font-family: "Playfair Display", serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
 }
 
 .zamok-faq {
@@ -500,7 +512,7 @@ body.zamok-pro .pricing-button .pp-theme-btn {
   margin-bottom: 0.35rem;
   color: var(--zamok-navy);
 }
-.zamok-form-card input,
+.zamok-form-card input:not([type="checkbox"]):not([type="radio"]),
 .zamok-form-card select,
 .zamok-form-card textarea {
   width: 100%;
@@ -511,6 +523,17 @@ body.zamok-pro .pricing-button .pp-theme-btn {
   font-family: Inter, sans-serif !important;
   color: var(--zamok-navy) !important;
   background: #fff !important;
+}
+.zamok-form-card .form-check-input[type="checkbox"] {
+  width: 1.125em !important;
+  height: 1.125em !important;
+  min-width: 1.125em;
+  margin-top: 0.28em;
+  margin-bottom: 0;
+  padding: 0 !important;
+  border-radius: 0.25em;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 .zamok-form-card input:focus,
 .zamok-form-card select:focus,
@@ -638,8 +661,26 @@ body.zamok-pro .zamok-footer .footer-bottom3 {
   color: rgba(255, 255, 255, 0.85);
 }
 
-body.zamok-pro .mean-container a.meanmenu-reveal span {
-  background: var(--zamok-navy);
+/* Мобильное меню в оффканвасе: без отдельного тёмного фона — общий белый */
+body.zamok-pro .offcanvas__info .mean-container .mean-bar,
+body.zamok-pro .offcanvas__info .mean-container .mean-nav {
+  background: transparent !important;
+}
+body.zamok-pro .offcanvas__info .mean-container a.meanmenu-reveal span {
+  background: var(--zamok-navy) !important;
+}
+body.zamok-pro .offcanvas__info .mean-container .mean-nav ul li a {
+  border-top-color: rgba(13, 35, 64, 0.12);
+  color: var(--zamok-navy) !important;
+  text-transform: none;
+  font-weight: 600;
+}
+body.zamok-pro .offcanvas__info .mean-container .mean-nav ul li a.mean-expand {
+  color: var(--zamok-navy) !important;
+  border-left: 1px solid rgba(13, 35, 64, 0.1);
+}
+body.zamok-pro .offcanvas__info .mean-container .mean-nav ul li a.mean-expand i {
+  color: var(--zamok-navy) !important;
 }
 
 body.zamok-pro .sticky {
@@ -794,6 +835,16 @@ body.zamok-pro .header-main .logo.zamok-header-logo {
 .zamok-hero-phone-card .nice-select .list {
   z-index: 100 !important;
 }
+.zamok-hero-phone-card .nice-select {
+  position: relative;
+  z-index: 1;
+}
+.zamok-hero-phone-card .nice-select.open {
+  z-index: 40;
+}
+.zamok-hero-phone-card .nice-select.open .list {
+  z-index: 500 !important;
+}
 .zamok-form-card form > .mb-3::after {
   content: "";
   display: table;
@@ -860,9 +911,11 @@ body.zamok-pro .zamok-guarantee .pp-offer-box-item:hover {
 
 /* Курсор и прочие элементы с var(--pp-theme) уже получают акцент из подмены --pp-theme */
 
-body.zamok-pro .mouseCursor.cursor-outer {
-  border-color: rgba(232, 81, 10, 0.45);
-  background-color: rgba(232, 81, 10, 0.35);
+/* Кастомный курсор отключён */
+body.zamok-pro .mouseCursor {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 body.zamok-pro .nice-select:hover,
@@ -945,10 +998,210 @@ body.zamok-pro .pp-team-information-item .pp-team-skill-box .progress-wrap .pro-
 
 body.zamok-pro .mean-container .mean-bar,
 body.zamok-pro .mean-container .mean-nav {
-  background: var(--zamok-navy) !important;
+  background: transparent !important;
 }
 
 body.zamok-pro .zamok-services .pp-offer-box-item .pp-offer-icon,
 body.zamok-pro .zamok-guarantee .pp-offer-box-item .pp-offer-icon {
   background: rgba(13, 35, 64, 0.07) !important;
+}
+
+/* Хедер: воздух между логотипом и телефоном на мобильных */
+body.zamok-pro .header-main .zamok-header-phone {
+  margin-left: 0.75rem !important;
+}
+@media (min-width: 576px) {
+  body.zamok-pro .header-main .zamok-header-phone {
+    margin-left: 1.25rem !important;
+  }
+}
+
+/* Хиро: планшеты и узкий десктоп — центр, без клип-анимации заголовка */
+@media (max-width: 1199px) {
+  .zamok-hero .pp-hero-content {
+    text-align: center;
+  }
+  .zamok-hero .pp-hero-content .zamok-badge-live {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .zamok-hero .pp-hero-content > p.pp-text-muted,
+  .zamok-hero .pp-hero-content > p.zamok-subtitle-brief,
+  .zamok-hero .pp-hero-content > p.pp-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .zamok-hero .pp-hero-content .pp-hero-button {
+    justify-content: center;
+  }
+  .zamok-hero .pp-hero-content h1.img-custom-anim-left {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .zamok-hero .row > .col-xl-6:nth-child(2) .zamok-hero-phone-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28rem;
+  }
+}
+
+/* Nice Select: все пункты видны на мобильных */
+.zamok-hero-phone-card .nice-select .list,
+.zamok-form-card .nice-select .list {
+  max-height: min(55vh, 300px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Блок отзывов (оранжевая полоса): оценка белая, звезда жёлтая */
+.zamok-review-bar .zamok-review-bar-score {
+  color: #fff !important;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.2;
+}
+.zamok-review-bar .zamok-review-bar-star {
+  color: #facc15 !important;
+  margin-right: 0.2em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.zamok-review-bar .zamok-review-bar-count {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Хаб «Специализации»: отступ от предыдущей секции */
+.zamok-seo-hub {
+  padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+}
+
+/* Компактная форма заявки */
+.zamok-form-card.zamok-form-card--compact {
+  padding: 1.25rem 1.35rem;
+}
+.zamok-form-card.zamok-form-card--compact label {
+  font-size: 0.78rem;
+  margin-bottom: 0.25rem;
+}
+.zamok-form-card.zamok-form-card--compact input:not([type="checkbox"]):not([type="radio"]),
+.zamok-form-card.zamok-form-card--compact textarea,
+.zamok-form-card.zamok-form-card--compact .nice-select {
+  padding: 0.55rem 0.85rem !important;
+  margin-bottom: 0 !important;
+  min-height: 0;
+}
+.zamok-form-card.zamok-form-card--compact .nice-select {
+  height: auto;
+  min-height: 46px;
+  line-height: 1.35;
+  padding-top: 0.65rem !important;
+  padding-bottom: 0.65rem !important;
+}
+.zamok-form-card.zamok-form-card--compact .mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+.zamok-form-card.zamok-form-card--compact textarea {
+  min-height: 4.5rem;
+}
+.zamok-form-consent {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--zamok-muted);
+}
+.zamok-form-consent a {
+  color: var(--zamok-accent);
+  font-weight: 600;
+}
+
+/* Плашка cookies */
+.zamok-cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10050;
+  padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom, 0));
+  background: rgba(10, 25, 41, 0.97);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  display: none;
+}
+.zamok-cookie-banner.is-visible {
+  display: block;
+}
+.zamok-cookie-banner .container-fluid {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.zamok-cookie-banner a {
+  color: #fde68a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.zamok-cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.zamok-cookie-banner__btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.zamok-cookie-banner__btn--accept {
+  background: var(--zamok-accent);
+  color: #fff;
+}
+.zamok-cookie-banner__btn--essential {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+body.zamok-pro.zamok-cookie-banner-open {
+  padding-bottom: 9rem;
+}
+@media (min-width: 768px) {
+  body.zamok-pro.zamok-cookie-banner-open {
+    padding-bottom: 7rem;
+  }
+}
+
+/* Текстовая страница политики */
+.zamok-legal-page main {
+  max-width: 48rem;
+}
+.zamok-legal-page .zamok-legal-prose h2 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--zamok-navy);
+}
+.zamok-legal-page .zamok-legal-prose p,
+.zamok-legal-page .zamok-legal-prose li {
+  color: var(--zamok-muted);
+  line-height: 1.55;
+}
+.zamok-legal-page .zamok-legal-prose ul {
+  padding-left: 1.25rem;
+}
+.zamok-legal-simple-header {
+  background: var(--zamok-navy);
+  padding: 1rem 0;
+}
+.zamok-legal-simple-header a {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+.zamok-legal-simple-header a:hover {
+  text-decoration: underline;
 }

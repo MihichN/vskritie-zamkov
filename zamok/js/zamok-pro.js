@@ -55,12 +55,37 @@
       e.preventDefault();
       var name = $.trim($("#zamok-name").val());
       var phoneDigits = ($("#zamok-phone").val() || "").replace(/\D/g, "");
-      if (name.length < 2 || phoneDigits.length < 11) {
+      var consent = $("#zamok-consent-pdn").length
+        ? $("#zamok-consent-pdn").prop("checked")
+        : true;
+      if (name.length < 2 || phoneDigits.length < 11 || !consent) {
         return false;
       }
       $(this).find('button[type="submit"]').hide();
       $("#zamok-form-success").addClass("show");
       return false;
+    });
+
+    var COOKIE_KEY = "zamok_cookie_consent";
+    var $banner = $("#zamok-cookie-banner");
+    function hideCookieBanner() {
+      $banner.removeClass("is-visible").attr("hidden", "hidden").attr("aria-hidden", "true");
+      $("body").removeClass("zamok-cookie-banner-open");
+    }
+    function showCookieBanner() {
+      $banner.removeAttr("hidden").addClass("is-visible").attr("aria-hidden", "false");
+      $("body").addClass("zamok-cookie-banner-open");
+    }
+    if ($banner.length && !localStorage.getItem(COOKIE_KEY)) {
+      showCookieBanner();
+    }
+    $banner.on("click", "[data-zamok-cookie-accept]", function () {
+      localStorage.setItem(COOKIE_KEY, "all");
+      hideCookieBanner();
+    });
+    $banner.on("click", "[data-zamok-cookie-essential]", function () {
+      localStorage.setItem(COOKIE_KEY, "essential");
+      hideCookieBanner();
     });
 
     var $float = $("#zamok-float-call");

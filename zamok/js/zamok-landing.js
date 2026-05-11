@@ -34,6 +34,28 @@
     $(window).on("scroll resize", floatVisibility);
     floatVisibility();
 
+    var COOKIE_KEY = "zamok_cookie_consent";
+    var $banner = $("#zamok-cookie-banner");
+    function hideCookieBanner() {
+      $banner.removeClass("is-visible").attr("hidden", "hidden").attr("aria-hidden", "true");
+      $("body").removeClass("zamok-cookie-banner-open");
+    }
+    function showCookieBanner() {
+      $banner.removeAttr("hidden").addClass("is-visible").attr("aria-hidden", "false");
+      $("body").addClass("zamok-cookie-banner-open");
+    }
+    if ($banner.length && !localStorage.getItem(COOKIE_KEY)) {
+      showCookieBanner();
+    }
+    $banner.on("click", "[data-zamok-cookie-accept]", function () {
+      localStorage.setItem(COOKIE_KEY, "all");
+      hideCookieBanner();
+    });
+    $banner.on("click", "[data-zamok-cookie-essential]", function () {
+      localStorage.setItem(COOKIE_KEY, "essential");
+      hideCookieBanner();
+    });
+
     $("form[data-landing-form]").each(function () {
       var $form = $(this);
       var $tel = $form.find(".zamok-phone-input");
@@ -47,7 +69,9 @@
         e.preventDefault();
         var name = $.trim($form.find('[name="name"]').val());
         var phoneDigits = ($tel.val() || "").replace(/\D/g, "");
-        if (name.length < 2 || phoneDigits.length < 11) return false;
+        var $consent = $form.find('input[name="consent_pdn"]');
+        var consentOk = $consent.length ? $consent.prop("checked") : true;
+        if (name.length < 2 || phoneDigits.length < 11 || !consentOk) return false;
         $form.find('[type="submit"]').hide();
         if ($ok.length) {
           $ok.removeAttr("hidden").addClass("show");
