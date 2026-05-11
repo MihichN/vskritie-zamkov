@@ -39,21 +39,33 @@
     <header class="site-header" data-header>
       <div class="topbar container">
         <a class="brand" href="../" aria-label="КЛЮЧНИК.РФ на главную"><span>КЛЮЧНИК</span><strong>.РФ</strong></a>
-        <div class="header-actions">
-          <span class="header-note">Одинцово · выезд 24/7</span>
-          <a class="phone-link" href="tel:+79990000000">+7 999 000-00-00</a>
-        </div>
-      </div>
-      <nav class="nav-strip" aria-label="Основная навигация">
-        <div class="container nav-scroll">
+        <nav id="site-nav" class="header-nav" data-nav-panel aria-label="Основная навигация">
+          <a class="nav-cta" href="#request">Вызвать мастера</a>
           <a href="../#services">Услуги</a>
           <a href="../#process">Как мы работаем</a>
           <a href="../#guarantees">Гарантии</a>
           <a href="../#reviews">Отзывы</a>
           <a href="../#faq">Вопросы</a>
-          <a class="nav-cta" href="#request">Вызвать мастера</a>
+          <a class="phone-link phone-link--nav-drawer" href="tel:+79990000000">+7 999 000-00-00</a>
+        </nav>
+        <div class="topbar-end">
+          <button
+            type="button"
+            class="nav-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Открыть меню"
+          >
+            <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+          <div class="header-actions">
+            <span class="header-note">Одинцово · выезд 24/7</span>
+            <a class="phone-link phone-link--header-bar" href="tel:+79990000000">+7 999 000-00-00</a>
+          </div>
         </div>
-      </nav>
+      </div>
+      <div class="nav-backdrop" data-nav-backdrop aria-hidden="true" tabindex="-1"></div>
     </header>
 
     <main id="main">
@@ -154,8 +166,12 @@
             <label>Тип услуги<select name="service" required><option value="">Выберите услугу</option><option>Вскрытие квартиры или дома</option><option>Вскрытие автомобиля</option><option>Вскрытие сейфа</option><option>Вскрытие офиса или склада</option></select></label>
             <label>Адрес<input type="text" name="address" autocomplete="street-address" placeholder="Одинцово, улица, дом" required /></label>
             <label>Комментарий<textarea name="message" rows="4"></textarea></label>
+            <label class="form-consent">
+              <input type="checkbox" name="pd_consent" value="yes" required data-pd-consent />
+              <span>Я согласен(на) на <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">обработку персональных данных</a> и подтверждаю ознакомление с <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</span>
+            </label>
             <button class="button button-primary" type="submit">Отправить заявку</button>
-            <p class="form-note" data-form-note>Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.</p>
+            <p class="form-note" data-form-note>Заявка обрабатывается после явного согласия. Подробности — в политике конфиденциальности.</p>
           </form>
         </div>
       </section>
@@ -163,7 +179,7 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p></div>
+        <div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p><p class="footer-legal"><a href="../politika-konfidencialnosti.html">Политика конфиденциальности</a> · <button type="button" class="footer-legal-link" data-cookie-settings>Настройки cookies</button></p></div>
         <div><h2>Контакты</h2><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div>
         <div><h2>Посадочные</h2><a href="../vskrytie-zamkov-moskva/">Москва</a><a href="../vskrytie-zamkov-spb/">СПб</a><a href="../vskrytie-zamkov-himki/">Химки</a></div>
       </div>

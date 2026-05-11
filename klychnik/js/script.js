@@ -18,9 +18,17 @@
       formSubmitEmail: "info@klyuchnik.rf",
     },
     metrics: {
-      yandexMetrikaId: "",
+      yandexMetrikaId: "109151101",
+    },
+    legal: {
+      operatorName: "",
+      operatorInn: "",
+      operatorAddress: "",
+      pdContactEmail: "",
     },
   };
+
+  const COOKIE_CONSENT_KEY = "klyuchnik_ru_cookie_consent_v1";
 
   function mergeConfig(base, override = {}) {
     return {
@@ -30,6 +38,7 @@
       contacts: { ...base.contacts, ...override.contacts },
       forms: { ...base.forms, ...override.forms },
       metrics: { ...base.metrics, ...override.metrics },
+      legal: { ...base.legal, ...(override.legal || {}) },
     };
   }
 
@@ -142,9 +151,87 @@
     updateJsonLd(config);
   }
 
+  function getLegalPagesPrefix() {
+    const link = document.querySelector('link[rel="stylesheet"][href*="style.css"]');
+    const href = link?.getAttribute("href") || "";
+    return href.startsWith("../") ? "../" : "";
+  }
+
+  function getPrivacyPolicyUrl() {
+    return `${getLegalPagesPrefix()}politika-konfidencialnosti.html`;
+  }
+
+  function setupCookieSettingsLink() {
+    document.querySelectorAll("[data-cookie-settings]").forEach((button) => {
+      button.addEventListener("click", () => {
+        localStorage.removeItem(COOKIE_CONSENT_KEY);
+        window.location.reload();
+      });
+    });
+  }
+
+  function renderCookieBanner(config) {
+    if (document.querySelector("[data-cookie-consent-root]")) return;
+
+    const policyUrl = getPrivacyPolicyUrl();
+    const root = document.createElement("div");
+    root.className = "cookie-consent";
+    root.setAttribute("data-cookie-consent-root", "");
+    root.setAttribute("role", "dialog");
+    root.setAttribute("aria-modal", "true");
+    root.setAttribute("aria-label", "Согласие на использование cookies");
+    root.innerHTML = `
+      <div class="cookie-consent__panel">
+        <p>
+          Мы используем cookies и при вашем согласии можем подключать инструменты веб-аналитики (например, Яндекс.Метрику)
+          для улучшения работы сайта. Технически необходимые cookies могут применяться без дополнительного согласия.
+          Подробности — в <a href="${policyUrl}">политике конфиденциальности</a>.
+        </p>
+        <div class="cookie-consent__actions">
+          <button type="button" class="button button-primary" data-cookie-accept-all>Принять все</button>
+          <button type="button" class="button button-secondary" data-cookie-essential>Только необходимые</button>
+          <a class="cookie-consent__link" href="${policyUrl}">Политика конфиденциальности</a>
+        </div>
+      </div>
+    `;
+    document.body.append(root);
+    window.requestAnimationFrame(() => root.classList.add("is-visible"));
+
+    function closeBanner() {
+      root.classList.remove("is-visible");
+      window.setTimeout(() => root.remove(), 280);
+    }
+
+    root.querySelector("[data-cookie-accept-all]")?.addEventListener("click", () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, "all");
+      closeBanner();
+      setupYandexMetrika(config);
+    });
+
+    root.querySelector("[data-cookie-essential]")?.addEventListener("click", () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, "essential");
+      closeBanner();
+    });
+  }
+
+  function setupCookieConsent(config) {
+    const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (stored === "all") {
+      setupYandexMetrika(config);
+      return;
+    }
+    if (stored === "essential") {
+      return;
+    }
+    renderCookieBanner(config);
+  }
+
   function setupYandexMetrika(config) {
-    const id = config.metrics.yandexMetrikaId;
-    if (!id || window.ym) return;
+    const rawId = config.metrics.yandexMetrikaId;
+    const id = typeof rawId === "string" ? parseInt(rawId, 10) : rawId;
+    if (!id || Number.isNaN(id) || window.ym) return;
+
+    const scriptSrc = `https://mc.yandex.ru/metrika/tag.js?id=${id}`;
 
     (function loadMetrika(m, e, t, r, i, k, a) {
       m[i] =
@@ -153,18 +240,27 @@
           (m[i].a = m[i].a || []).push(arguments);
         };
       m[i].l = 1 * new Date();
+      for (let j = 0; j < document.scripts.length; j += 1) {
+        if (document.scripts[j].src === r) return;
+      }
       k = e.createElement(t);
       a = e.getElementsByTagName(t)[0];
       k.async = 1;
       k.src = r;
       a.parentNode.insertBefore(k, a);
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    })(window, document, "script", scriptSrc, "ym");
+
+    window.dataLayer = window.dataLayer || [];
 
     window.ym(id, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
+      ssr: true,
       webvisor: true,
+      clickmap: true,
+      ecommerce: "dataLayer",
+      referrer: document.referrer,
+      url: location.href,
+      accurateTrackBounce: true,
+      trackLinks: true,
     });
 
     document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
@@ -173,6 +269,72 @@
     document.querySelectorAll(".request-form").forEach((form) => {
       form.addEventListener("submit", () => window.ym?.(id, "reachGoal", "form_submit"));
     });
+  }
+
+  function setHeaderOffset() {
+    document.querySelectorAll("[data-header]").forEach((header) => {
+      header.style.setProperty("--header-offset", `${header.offsetHeight}px`);
+    });
+  }
+
+  function setupMobileNav() {
+    const headers = document.querySelectorAll("[data-header]");
+    if (!headers.length) return;
+
+    function closeAll() {
+      headers.forEach((header) => {
+        header.classList.remove("is-nav-open");
+        const btn = header.querySelector("[data-nav-toggle]");
+        if (btn) {
+          btn.setAttribute("aria-expanded", "false");
+          btn.setAttribute("aria-label", "Открыть меню");
+        }
+        const backdrop = header.querySelector("[data-nav-backdrop]");
+        if (backdrop) backdrop.setAttribute("aria-hidden", "true");
+      });
+      document.body.classList.remove("is-nav-open");
+    }
+
+    function toggleHeader(header) {
+      const willOpen = !header.classList.contains("is-nav-open");
+      closeAll();
+      if (willOpen) {
+        header.classList.add("is-nav-open");
+        document.body.classList.add("is-nav-open");
+        const btn = header.querySelector("[data-nav-toggle]");
+        if (btn) {
+          btn.setAttribute("aria-expanded", "true");
+          btn.setAttribute("aria-label", "Закрыть меню");
+        }
+        const backdrop = header.querySelector("[data-nav-backdrop]");
+        if (backdrop) backdrop.setAttribute("aria-hidden", "false");
+      }
+      setHeaderOffset();
+    }
+
+    headers.forEach((header) => {
+      const btn = header.querySelector("[data-nav-toggle]");
+      const backdrop = header.querySelector("[data-nav-backdrop]");
+      const panel = header.querySelector("[data-nav-panel]");
+
+      btn?.addEventListener("click", () => toggleHeader(header));
+      backdrop?.addEventListener("click", closeAll);
+
+      panel?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeAll);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      setHeaderOffset();
+      if (window.innerWidth >= 768) closeAll();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeAll();
+    });
+
+    setHeaderOffset();
   }
 
   function setupFloatingCall() {
@@ -203,9 +365,13 @@
       updateFloatingCall();
       updateHeader();
     });
-    window.addEventListener("resize", updateFloatingCall);
+    window.addEventListener("resize", () => {
+      updateFloatingCall();
+      setHeaderOffset();
+    });
     updateFloatingCall();
     updateHeader();
+    setHeaderOffset();
   }
 
   function setupFaq() {
@@ -264,7 +430,9 @@
   loadConfig(() => {
     const config = mergeConfig(defaults, window.SITE_CONFIG);
     updateContacts(config);
-    setupYandexMetrika(config);
+    setupCookieConsent(config);
+    setupCookieSettingsLink();
+    setupMobileNav();
     setupFloatingCall();
     setupFaq();
     setupCarousel();

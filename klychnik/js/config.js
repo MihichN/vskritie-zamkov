@@ -17,6 +17,12 @@ window.SITE_CONFIG = {
     formSubmitEmail: "info@klyuchnik.rf",
   },
   metrics: {
-    yandexMetrikaId: "",
+    yandexMetrikaId: "109151101",
+  },
+  legal: {
+    operatorName: "",
+    operatorInn: "",
+    operatorAddress: "",
+    pdContactEmail: "",
   },
 };

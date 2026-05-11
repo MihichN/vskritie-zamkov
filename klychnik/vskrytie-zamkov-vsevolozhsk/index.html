@@ -19,16 +19,40 @@
   </head>
   <body>
     <header class="site-header" data-header>
-      <div class="topbar container"><a class="brand" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><div class="header-actions"><span class="header-note">Всеволожск · 24/7</span><a class="phone-link" href="tel:+79990000000">+7 999 000-00-00</a></div></div>
-      <nav class="nav-strip" aria-label="Основная навигация"><div class="container nav-scroll"><a href="../#services">Услуги</a><a href="../#guarantees">Гарантии</a><a href="../#faq">Вопросы</a><a class="nav-cta" href="#request">Вызвать мастера</a></div></nav>
+      <div class="topbar container">
+        <a class="brand" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a>
+        <nav id="site-nav" class="header-nav" data-nav-panel aria-label="Основная навигация">
+          <a class="nav-cta" href="#request">Вызвать мастера</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#guarantees">Гарантии</a>
+          <a href="../#faq">Вопросы</a>
+          <a class="phone-link phone-link--nav-drawer" href="tel:+79990000000">+7 999 000-00-00</a>
+        </nav>
+        <div class="topbar-end">
+          <button
+            type="button"
+            class="nav-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Открыть меню"
+          >
+            <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+          <div class="header-actions">
+            <span class="header-note">Всеволожск · 24/7</span><a class="phone-link phone-link--header-bar" href="tel:+79990000000">+7 999 000-00-00</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-backdrop" data-nav-backdrop aria-hidden="true" tabindex="-1"></div>
     </header>
     <main>
       <section class="hero section local-hero"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow">Всеволожск · Ленинградская область</p><h1>Вскрытие замков во Всеволожске за 15-30 минут</h1><p class="hero-text">Откроем дверь квартиры, дома, автомобиля, сейфа или офиса во Всеволожске. Работаем 24/7, без ночных надбавок, с оплатой после результата.</p><div class="hero-actions"><a class="button button-primary" href="tel:+79990000000">Позвонить мастеру</a><a class="button button-secondary" href="#request">Оставить заявку</a></div><div class="trust-row"><span>Цена после осмотра</span><span>Документы проверяются</span><span>98% без повреждений</span></div></div><div class="hero-panel local-panel"><div class="status-card"><span class="pulse" aria-hidden="true"></span><span>Выезд во Всеволожск</span></div><div class="metric-grid local-metrics"><div><strong>15-30</strong><span>минут</span></div><div><strong>24/7</strong><span>каждый день</span></div><div><strong>от 1 500 ₽</strong><span>дверь или авто</span></div><div><strong>98%</strong><span>аккуратно</span></div></div></div></div></section>
       <section class="section"><div class="container local-content-grid"><article class="about-card"><p class="eyebrow">Для Всеволожска</p><h2>Аварийное вскрытие замков во Всеволожске</h2><p>Если заклинил замок входной двери, ключ сломался или потерян, мастер КЛЮЧНИК.РФ приедет во Всеволожск и аккуратно откроет замок.</p><p>Работаем с квартирами, автомобилями, сейфами, офисами и складами. Стоимость согласуется после осмотра, до начала работ.</p></article><div class="guarantee-list local-price-list"><article><h3>Квартира и дом</h3><p>Открыть дверь без ключа.</p><div class="price">от 1 500 ₽</div></article><article><h3>Автомобиль</h3><p>Вскрытие авто без повреждений.</p><div class="price">от 1 500 ₽</div></article><article><h3>Сейф</h3><p>Вскрытие после диагностики.</p><div class="price">от 2 500 ₽</div></article><article><h3>Офис и склад</h3><p>Открытие коммерческих объектов.</p><div class="price">от 2 000 ₽</div></article></div></div></section>
       <section class="section faq-section"><div class="container faq-grid"><div><p class="eyebrow">FAQ</p><h2>Частые вопросы</h2></div><div class="faq-list" data-faq><div class="faq-item"><button type="button" aria-expanded="true">Какие документы нужны?</button><div class="faq-panel"><p>Для квартиры или офиса может потребоваться подтверждение доступа, для автомобиля — СТС или ПТС.</p></div></div><div class="faq-item"><button type="button" aria-expanded="false">Есть ли ночная надбавка?</button><div class="faq-panel" hidden><p>Нет, сервис работает 24/7 без ночных надбавок.</p></div></div></div></div></section>
-      <section class="section request-section" id="request" data-request-section><div class="container request-grid"><div><p class="eyebrow">Вызов во Всеволожске</p><h2>Оставьте заявку</h2><p class="lead">Свяжемся и направим мастера.</p><div class="contact-card"><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div></div><form class="request-form" action="https://formsubmit.co/info@klyuchnik.rf" method="POST" data-form><input type="hidden" name="_subject" value="Заявка: вскрытие замков во Всеволожске" /><input type="hidden" name="_captcha" value="false" /><label>Имя<input type="text" name="name" required /></label><label>Телефон<input type="tel" name="phone" placeholder="+7 ___ ___-__-__" required data-phone-input /></label><label>Адрес<input type="text" name="address" placeholder="Всеволожск, улица, дом" required /></label><button class="button button-primary" type="submit">Отправить заявку</button><p class="form-note" data-form-note>Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.</p></form></div></section>
+      <section class="section request-section" id="request" data-request-section><div class="container request-grid"><div><p class="eyebrow">Вызов во Всеволожске</p><h2>Оставьте заявку</h2><p class="lead">Свяжемся и направим мастера.</p><div class="contact-card"><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div></div><form class="request-form" action="https://formsubmit.co/info@klyuchnik.rf" method="POST" data-form><input type="hidden" name="_subject" value="Заявка: вскрытие замков во Всеволожске" /><input type="hidden" name="_captcha" value="false" /><label>Имя<input type="text" name="name" required /></label><label>Телефон<input type="tel" name="phone" placeholder="+7 ___ ___-__-__" required data-phone-input /></label><label>Адрес<input type="text" name="address" placeholder="Всеволожск, улица, дом" required /></label><label class="form-consent"><input type="checkbox" name="pd_consent" value="yes" required data-pd-consent /><span>Я согласен(на) на <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">обработку персональных данных</a> и подтверждаю ознакомление с <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</span></label><button class="button button-primary" type="submit">Отправить заявку</button><p class="form-note" data-form-note>Заявка обрабатывается после явного согласия. Подробности — в политике конфиденциальности.</p></form></div></section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p></div><div><h2>Контакты</h2><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div><div><h2>Посадочные</h2><a href="../vskrytie-zamkov-spb/">СПб</a><a href="../vskrytie-zamkov-murino/">Мурино</a><a href="../vskrytie-zamkov-kudrovo/">Кудрово</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p><p class="footer-legal"><a href="../politika-konfidencialnosti.html">Политика конфиденциальности</a> · <button type="button" class="footer-legal-link" data-cookie-settings>Настройки cookies</button></p></div><div><h2>Контакты</h2><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div><div><h2>Посадочные</h2><a href="../vskrytie-zamkov-spb/">СПб</a><a href="../vskrytie-zamkov-murino/">Мурино</a><a href="../vskrytie-zamkov-kudrovo/">Кудрово</a></div></div></footer>
     <a class="floating-call" href="tel:+79990000000" data-floating-call aria-label="Позвонить"><span aria-hidden="true">☎</span>Позвонить</a>
     <script src="../js/script.js"></script>
   </body>

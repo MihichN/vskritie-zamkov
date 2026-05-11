@@ -21,9 +21,30 @@
     <header class="site-header" data-header>
       <div class="topbar container">
         <a class="brand" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a>
-        <div class="header-actions"><span class="header-note">Люберцы · выезд 24/7</span><a class="phone-link" href="tel:+79990000000">+7 999 000-00-00</a></div>
+        <nav id="site-nav" class="header-nav" data-nav-panel aria-label="Основная навигация">
+          <a class="nav-cta" href="#request">Вызвать мастера</a>
+          <a href="../#services">Услуги</a>
+          <a href="../#guarantees">Гарантии</a>
+          <a href="../#faq">Вопросы</a>
+          <a class="phone-link phone-link--nav-drawer" href="tel:+79990000000">+7 999 000-00-00</a>
+        </nav>
+        <div class="topbar-end">
+          <button
+            type="button"
+            class="nav-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Открыть меню"
+          >
+            <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+          <div class="header-actions">
+            <span class="header-note">Люберцы · выезд 24/7</span><a class="phone-link phone-link--header-bar" href="tel:+79990000000">+7 999 000-00-00</a>
+          </div>
+        </div>
       </div>
-      <nav class="nav-strip" aria-label="Основная навигация"><div class="container nav-scroll"><a href="../#services">Услуги</a><a href="../#guarantees">Гарантии</a><a href="../#faq">Вопросы</a><a class="nav-cta" href="#request">Вызвать мастера</a></div></nav>
+      <div class="nav-backdrop" data-nav-backdrop aria-hidden="true" tabindex="-1"></div>
     </header>
     <main>
       <section class="hero section local-hero">
@@ -40,9 +61,9 @@
       </section>
       <section class="section"><div class="container local-content-grid"><article class="about-card"><p class="eyebrow">Для Люберец</p><h2>Открыть замок без ключа в Люберцах</h2><p>Если захлопнулась дверь, ключ потерян, сломан или застрял в замке, мастер КЛЮЧНИК.РФ выедет в Люберцы и аккуратно откроет замок профессиональным инструментом.</p><p>Перед работой специалист проверяет право доступа, осматривает механизм и согласует стоимость. В большинстве случаев вскрытие проходит без повреждений.</p></article><div class="guarantee-list local-price-list"><article><h3>Квартира и дом</h3><p>Вскрытие входной двери.</p><div class="price">от 1 500 ₽</div></article><article><h3>Автомобиль</h3><p>Открытие авто без повреждений.</p><div class="price">от 1 500 ₽</div></article><article><h3>Сейф</h3><p>Диагностика и вскрытие сейфа.</p><div class="price">от 2 500 ₽</div></article><article><h3>Офис и склад</h3><p>Вскрытие коммерческих помещений.</p><div class="price">от 2 000 ₽</div></article></div></div></section>
       <section class="section faq-section"><div class="container faq-grid"><div><p class="eyebrow">FAQ</p><h2>Частые вопросы</h2></div><div class="faq-list" data-faq><div class="faq-item"><button type="button" aria-expanded="true">Работаете ночью в Люберцах?</button><div class="faq-panel"><p>Да, мастера выезжают круглосуточно, ночных надбавок нет.</p></div></div><div class="faq-item"><button type="button" aria-expanded="false">Когда платить?</button><div class="faq-panel" hidden><p>Оплата только после выполненной работы.</p></div></div></div></div></section>
-      <section class="section request-section" id="request" data-request-section><div class="container request-grid"><div><p class="eyebrow">Вызов в Люберцах</p><h2>Оставьте заявку</h2><p class="lead">Свяжемся в ближайшие минуты.</p><div class="contact-card"><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div></div><form class="request-form" action="https://formsubmit.co/info@klyuchnik.rf" method="POST" data-form><input type="hidden" name="_subject" value="Заявка: вскрытие замков в Люберцах" /><input type="hidden" name="_captcha" value="false" /><label>Имя<input type="text" name="name" required /></label><label>Телефон<input type="tel" name="phone" placeholder="+7 ___ ___-__-__" required data-phone-input /></label><label>Адрес<input type="text" name="address" placeholder="Люберцы, улица, дом" required /></label><button class="button button-primary" type="submit">Отправить заявку</button><p class="form-note" data-form-note>Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.</p></form></div></section>
+      <section class="section request-section" id="request" data-request-section><div class="container request-grid"><div><p class="eyebrow">Вызов в Люберцах</p><h2>Оставьте заявку</h2><p class="lead">Свяжемся в ближайшие минуты.</p><div class="contact-card"><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div></div><form class="request-form" action="https://formsubmit.co/info@klyuchnik.rf" method="POST" data-form><input type="hidden" name="_subject" value="Заявка: вскрытие замков в Люберцах" /><input type="hidden" name="_captcha" value="false" /><label>Имя<input type="text" name="name" required /></label><label>Телефон<input type="tel" name="phone" placeholder="+7 ___ ___-__-__" required data-phone-input /></label><label>Адрес<input type="text" name="address" placeholder="Люберцы, улица, дом" required /></label><label class="form-consent"><input type="checkbox" name="pd_consent" value="yes" required data-pd-consent /><span>Я согласен(на) на <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">обработку персональных данных</a> и подтверждаю ознакомление с <a href="../politika-konfidencialnosti.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</span></label><button class="button button-primary" type="submit">Отправить заявку</button><p class="form-note" data-form-note>Заявка обрабатывается после явного согласия. Подробности — в политике конфиденциальности.</p></form></div></section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p></div><div><h2>Контакты</h2><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div><div><h2>Посадочные</h2><a href="../vskrytie-zamkov-moskva/">Москва</a><a href="../vskrytie-zamkov-himki/">Химки</a><a href="../vskrytie-zamkov-odintsovo/">Одинцово</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="../"><span>КЛЮЧНИК</span><strong>.РФ</strong></a><p>Аварийное вскрытие замков 24/7.</p><p class="footer-legal"><a href="../politika-konfidencialnosti.html">Политика конфиденциальности</a> · <button type="button" class="footer-legal-link" data-cookie-settings>Настройки cookies</button></p></div><div><h2>Контакты</h2><a href="tel:+79990000000">+7 999 000-00-00</a><a href="mailto:info@klyuchnik.rf">info@klyuchnik.rf</a></div><div><h2>Посадочные</h2><a href="../vskrytie-zamkov-moskva/">Москва</a><a href="../vskrytie-zamkov-himki/">Химки</a><a href="../vskrytie-zamkov-odintsovo/">Одинцово</a></div></div></footer>
     <a class="floating-call" href="tel:+79990000000" data-floating-call aria-label="Позвонить"><span aria-hidden="true">☎</span>Позвонить</a>
     <script src="../js/script.js"></script>
   </body>
